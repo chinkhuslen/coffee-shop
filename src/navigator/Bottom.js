@@ -5,9 +5,18 @@ import ScanScreen from "../screens/Scan";
 import OrderScreen from "../screens/Order";
 import ProfileScreen from "../screens/Profile";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Image } from "react-native";
 const Tab = createBottomTabNavigator();
 
 export const BottomTabs = () => {
+  function HeaderLogo() {
+    return (
+      <Image
+        style={{ width: 168, height: 25 }}
+        source={require("../../assets/headerLogo.png")}
+      />
+    );
+  }
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -38,7 +47,22 @@ export const BottomTabs = () => {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerTitle: (props) => <HeaderLogo />,
+          headerRight: () => (
+            <Ionicons
+              style={{ marginRight: 15 }}
+              name={"ios-basket"}
+              size={20}
+              color={"black"}
+              onPress={() => alert("This is a button!")}
+            />
+          ),
+        }}
+      />
       <Tab.Screen name="Scan" component={ScanScreen} />
       <Tab.Screen name="Order" component={OrderScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
