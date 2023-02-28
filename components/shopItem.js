@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 const ShopItem = () => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("Scan")}>
+    <TouchableOpacity onPress={() => navigation.navigate("MyModal")}>
       <View style={styles.wrapper}>
         <View>
           <Image

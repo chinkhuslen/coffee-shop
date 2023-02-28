@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Text, TouchableOpacity } from "react-native";
+import MyModal from "../screens/MyModal";
 // import { Home, LoginScreen, OTPScreen, Profile } from "../screens";
 import { BottomTabs } from "./Bottom";
 
@@ -26,6 +27,13 @@ export const AuthStackComponent = () => {
         name="mainscreen"
         component={BottomTabs}
         options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="MyModal"
+        component={MyModal}
+        options={{
+          headerShown: false,
+        }}
       />
     </AuthStack.Navigator>
   );

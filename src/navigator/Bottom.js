@@ -8,6 +8,15 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Image } from "react-native";
 const Tab = createBottomTabNavigator();
 
+export const ModalScreen = ({ navigation }) => {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text style={{ fontSize: 30 }}>This is a modal!</Text>
+      <Button onPress={() => navigation.goBack()} title="Dismiss" />
+    </View>
+  );
+};
+
 export const BottomTabs = () => {
   function HeaderLogo() {
     return (
