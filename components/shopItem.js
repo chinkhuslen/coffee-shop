@@ -4,7 +4,17 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 const ShopItem = () => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("MyModal")}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("MyModal", {
+          itemId: 86,
+          itemUrl:
+            "https://feelgoodfoodie.net/wp-content/uploads/2021/11/how-to-make-hot-chocolate-7.jpg",
+          itemName: "Hot Chocolate",
+          itemPrice: "3.12",
+        })
+      }
+    >
       <View style={styles.wrapper}>
         <View>
           <Image

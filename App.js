@@ -1,5 +1,5 @@
 // import {  StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
 // import { AuthProvider, useAuth } from "./src/providers";
@@ -37,13 +37,13 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <NavigationContainer>
         {/* <AuthProvider> */}
         {/* <TabNav /> */}
         <AuthStackComponent />
         {/* </AuthProvider> */}
       </NavigationContainer>
-    </SafeAreaView>
+    </View>
   );
 }
