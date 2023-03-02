@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { Button } from "react-native-elements";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Oz from "../../assets/8oz.js";
 const MyModal = ({ route, navigation }) => {
   const { itemId, itemUrl, itemName, itemPrice } = route.params;
   return (
@@ -22,18 +23,28 @@ const MyModal = ({ route, navigation }) => {
             type="clear"
           />
         </View>
-        <View style={{ zIndex: -9999999999 }}>
+        <View style={{ zIndex: -1 }}>
           <Image
             style={{
-              width: "95%",
-              height: 200,
+              width: "100%",
+              height: 300,
               borderRadius: 5,
               display: "absolute",
               top: 0,
-              zIndex: -9999,
+              zIndex: -1,
             }}
             source={{ uri: itemUrl }}
           />
+          <View>
+            <Text>Size options</Text>
+            <View />
+            <View>
+              <View>
+                <Oz />
+                {/* <Text>Small</Text> */}
+              </View>
+            </View>
+          </View>
         </View>
       </View>
     </ScrollView>
