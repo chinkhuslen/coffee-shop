@@ -1,49 +1,38 @@
-// import {  StyleSheet } from "react-native";
-import { SafeAreaView, View } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
-import * as SplashScreen from "expo-splash-screen";
-// import { AuthProvider, useAuth } from "./src/providers";
-import { AuthStackComponent } from "./src/navigator";
-import { NavigationContainer } from "@react-navigation/native";
-SplashScreen.preventAutoHideAsync();
+import React from "react";
+import { View, Button } from "react-native";
+import notifee from "@notifee/react-native";
 
 export default function App() {
-  const [appIsReady, setAppIsReady] = useState(false);
+  async function onDisplayNotification() {
+    // Request permissions (required for iOS)
+    await notifee.requestPermission();
 
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Artificially delay for two seconds to simulate a slow loading
-        // experience. Please remove this if you copy and paste the code!
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        setAppIsReady(true);
-      }
-    }
+    // Create a channel (required for Android)
+    const channelId = await notifee.createChannel({
+      id: "default",
+      name: "Default Channel",
+    });
 
-    prepare();
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      await SplashScreen.hideAsync();
-    }
-  }, [appIsReady]);
-
-  if (!appIsReady) {
-    return null;
+    // Display a notification
+    await notifee.displayNotification({
+      title: "Notification Title",
+      body: "Main body content of the notification",
+      android: {
+        channelId,
+        smallIcon: "name-of-a-small-icon", // optional, defaults to 'ic_launcher'.
+        // pressAction is needed if you want the notification to open the app when pressed
+        pressAction: {
+          id: "default",
+        },
+      },
+    });
   }
-
   return (
-    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <NavigationContainer>
-        {/* <AuthProvider> */}
-        {/* <TabNav /> */}
-        <AuthStackComponent />
-        {/* </AuthProvider> */}
-      </NavigationContainer>
+    <View>
+      <Button
+        title="Display Notification"
+        onPress={() => onDisplayNotification()}
+      />
     </View>
   );
 }

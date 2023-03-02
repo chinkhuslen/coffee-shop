@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "my-app",
+
     "slug": "my-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,16 +17,19 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chinkhuslen.myapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.chinkhuslen.myapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": ["@notifee/react-native"]
   }
 }
