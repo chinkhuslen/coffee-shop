@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { Button } from "react-native-elements";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Oz from "../../assets/8oz.js";
+// import Oz from "../../assets/8oz.js";
 const MyModal = ({ route, navigation }) => {
   const { itemId, itemUrl, itemName, itemPrice } = route.params;
   return (
@@ -40,7 +40,7 @@ const MyModal = ({ route, navigation }) => {
             <View />
             <View>
               <View>
-                <Oz />
+                {/* <Oz /> */}
                 {/* <Text>Small</Text> */}
               </View>
             </View>
